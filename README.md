@@ -14,11 +14,11 @@ use ZaCoZa\Assetic\Filter\LessFilter;
 // The Main Less File with your @import files
 $myMainLessFile = __DIR__.'/assets/styles/main.less'
     
-$lessFilter = new LessFilter(
-                              '/usr/local/bin/node',                // The path to the node binary
-                              array('/usr/local/lib/node_modules'), // An array of node paths
-                              array($myMainLessFile)                // MAGIC: An array of file paths you want to TOUCH
-                            );
+new LessFilter(
+                '/usr/local/bin/node',                // The path to the node binary
+                array('/usr/local/lib/node_modules'), // An array of node paths
+                array($myMainLessFile)                // MAGIC: An array of file paths you want to touch()
+               );
 ```
 
 
