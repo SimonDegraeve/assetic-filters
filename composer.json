@@ -1,0 +1,20 @@
+{
+    "name": "zacoza/assetic",
+    "description": "Customize LessFilter to detect change in @import files",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon Degraeve",
+            "email": "simon.degraeve@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "ZaCoZa\\Assetic": "src/"
+        }
+    }
+}
