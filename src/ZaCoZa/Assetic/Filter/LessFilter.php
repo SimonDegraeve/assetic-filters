@@ -11,6 +11,8 @@
 
 namespace ZaCoZa\Assetic\Filter;
 
+use Assetic\Filter\BaseNodeFilter;
+use Assetic\Filter\DependencyExtractorInterface;
 use Assetic\Asset\AssetInterface;
 use Assetic\Exception\FilterException;
 use Assetic\Factory\AssetFactory;
