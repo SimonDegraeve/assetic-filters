@@ -1,5 +1,5 @@
 {
-    "name": "SimonDegraeve/assetic-lessfilter-fix",
+    "name": "zacoza/assetic-lessfilter-fix",
     "description": "Customize LessFilter to detect change in @import files",
     "license": "MIT",
     "authors": [
@@ -14,7 +14,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-0": {
-            "AsseticLessFilterFix": "src/"
+            "ZaCoZa\\AsseticFix": "src/"
         }
     }
 }
