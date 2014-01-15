@@ -17,7 +17,7 @@ $myMainLessFile = __DIR__.'/assets/styles/main.less'
 $lessFilter = new LessFilter(
                               '/usr/local/bin/node',                // The path to the node binary
                               array('/usr/local/lib/node_modules'), // An array of node paths
-                              array($myMainLessFile)                // MAGIC: An array of file paths you want TOUCH
+                              array($myMainLessFile)                // MAGIC: An array of file paths you want to TOUCH
                             );
 ```
 
