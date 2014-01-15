@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Assetic\Filter;
+namespace ZaCoZa\AsseticFix\Filter;
 
 use Assetic\Asset\AssetInterface;
 use Assetic\Exception\FilterException;
