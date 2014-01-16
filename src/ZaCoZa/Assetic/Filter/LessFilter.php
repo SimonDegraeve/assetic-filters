@@ -22,7 +22,7 @@ use Assetic\Util\LessUtils;
  * Loads LESS files.
  *
  * @link http://lesscss.org/
- * @author Kris Wallsmith <kris.wallsmith@gmail.com>
+ * @author Simon Degraeve <simon.degraeve@gmail.com>
  */
 class LessFilter extends BaseNodeFilter implements DependencyExtractorInterface
 {
