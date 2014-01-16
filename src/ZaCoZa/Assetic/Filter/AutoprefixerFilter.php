@@ -32,9 +32,10 @@ class AutoprefixerFilter extends BaseNodeFilter
      */
     private $browsers = array();
 
-    public function __construct($autoprefixerBin)
+    public function __construct($autoprefixerBin, array $browsers = null)
     {
         $this->autoprefixerBin = $autoprefixerBin;
+        if( $browsers ){ $this->setBrowsers($browsers); }
     }
 
     /**
