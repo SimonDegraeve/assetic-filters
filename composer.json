@@ -1,6 +1,6 @@
 {
-    "name": "zacoza/assetic-lessfilter-fix",
-    "description": "Customize LessFilter to detect change in @import files",
+    "name": "zacoza/assetic-filters",
+    "description": "",
     "license": "MIT",
     "authors": [
         {

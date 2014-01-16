@@ -1,9 +1,13 @@
-assetic-lessfilter-fix
+assetic-filters
 ======================
 
-Assetic is not able do detect change in @import files wen you use Less. Here comes the fix!
+# AutoprefixerFilter
 
-# How?
+See [autoprefixer](https://github.com/ai/autoprefixer)
+
+# LessFilter
+
+Assetic is not able do detect change in @import files wen you use Less. Here comes the fix!
 
 This filter take a third parameter which is an array of file paths. The files provided this way will be `touch()` by the filter to change their access time. So Assetic will detect a change and will rebuild the asset.
 
