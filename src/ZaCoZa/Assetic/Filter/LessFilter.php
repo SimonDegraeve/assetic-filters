@@ -74,8 +74,8 @@ class LessFilter extends BaseNodeFilter implements DependencyExtractorInterface
             if(file_exists($file))
                 if(is_writable($file))
                     touch($file);
-                else throw new Exception("File is not writable: ".$file);
-            else throw new Exception("File doesn't exists: ".$file); 
+                else throw new \Exception("File is not writable: ".$file);
+            else throw new \Exception("File doesn't exists: ".$file); 
         }
     }
 
