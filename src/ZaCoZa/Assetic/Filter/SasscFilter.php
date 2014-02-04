@@ -1,27 +1,5 @@
 <?php
-namespace AsseticAdditions\Filter;
-
-/*
- * Copyright (c) 2013 Daniel Corn
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- */
+namespace namespace ZaCoZa\Assetic\Filter;;
 
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\DependencyExtractorInterface;
@@ -37,19 +15,23 @@ use Assetic\Util\CssUtils;
  */
 class SasscFilter extends BaseProcessFilter implements DependencyExtractorInterface {
 
-	const STYLE_NESTED = 'nested';
-	const STYLE_EXPANDED = 'expanded';
-	const STYLE_COMPACT = 'compact';
-	const STYLE_COMPRESSED = 'compressed';
+	const STYLE_NESTED 		= 'nested';
+	const STYLE_EXPANDED 		= 'expanded';
+	const STYLE_COMPACT 		= 'compact';
+	const STYLE_COMPRESSED 		= 'compressed';
+	
+	const SOURCE_COMMENTS_NONE 	= 'none';
+	const SOURCE_COMMENTS_NORMAL 	= 'normal';
+	const SOURCE_COMMENTS_MAP 	= 'map';
 
 	protected $binaryPath;
 	protected $style;
-	protected $lineNumbers;
+	protected $sourceComments;
 	protected $emitSourceMap;
 	protected $loadPaths = array();
 
 
-	public function __construct($binaryPath = '/usr/bin/sassc') {
+	public function __construct($binaryPath = '/usr/bin/node-sass') {
 		$this->binaryPath = $binaryPath;
 	}
 
@@ -68,16 +50,16 @@ class SasscFilter extends BaseProcessFilter implements DependencyExtractorInterf
 
 		$allLoadPaths = $this->loadPaths;
 		array_unshift($allLoadPaths, $assetDirectory);
-		$pb->add('-I')->add(implode(':', $allLoadPaths));
+		$pb->add('--include-path')->add(implode(':', $allLoadPaths));
 
 		if ($this->style) {
-			$pb->add('-t')->add($this->style);
+			$pb->add('--output-style')->add($this->style);
 		}
-		if ($this->lineNumbers) {
-			$pb->add('-l');
+		if ($this->sourceComments) {
+			$pb->add('--source-comments')->add($this->sourceComments);
 		}
 		if ($this->emitSourceMap) {
-			$pb->add('-g');
+			$pb->add('--source-map');
 		}
 
 		// input
@@ -142,8 +124,8 @@ class SasscFilter extends BaseProcessFilter implements DependencyExtractorInterf
 	}
 
 
-	public function setLineNumbers($lineNumbers) {
-		$this->lineNumbers = $lineNumbers;
+	public function setSourceComments($sourceComments) {
+		$this->sourceComments = sourceComments;
 	}
 
 
