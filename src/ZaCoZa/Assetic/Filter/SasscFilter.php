@@ -15,14 +15,14 @@ use Assetic\Util\CssUtils;
  */
 class SasscFilter extends BaseProcessFilter implements DependencyExtractorInterface {
 
-	const STYLE_NESTED 		= 'nested';
-	const STYLE_EXPANDED 		= 'expanded';
-	const STYLE_COMPACT 		= 'compact';
-	const STYLE_COMPRESSED 		= 'compressed';
+	const STYLE_NESTED 						= 'nested';
+	const STYLE_EXPANDED 					= 'expanded';
+	const STYLE_COMPACT 					= 'compact';
+	const STYLE_COMPRESSED 				= 'compressed';
 	
-	const SOURCE_COMMENTS_NONE 	= 'none';
+	const SOURCE_COMMENTS_NONE 		= 'none';
 	const SOURCE_COMMENTS_NORMAL 	= 'normal';
-	const SOURCE_COMMENTS_MAP 	= 'map';
+	const SOURCE_COMMENTS_MAP 		= 'map';
 
 	protected $binaryPath;
 	protected $style;
@@ -38,6 +38,8 @@ class SasscFilter extends BaseProcessFilter implements DependencyExtractorInterf
 	public function filterLoad(AssetInterface $asset) {
 		$sassProcessArgs = array($this->binaryPath);
 		$pb = $this->createProcessBuilder($sassProcessArgs);
+
+		$pb->add('--stdout');
 
 		$assetDirectory = '';
 		if (method_exists($asset, 'getSourceDirectory')) {
@@ -62,21 +64,20 @@ class SasscFilter extends BaseProcessFilter implements DependencyExtractorInterf
 			$pb->add('--source-map');
 		}
 
-		// input
-		// $pb->add($input = tempnam(sys_get_temp_dir(), 'assetic_sass'));
-		// file_put_contents($input, $asset->getContent());
-
 		$pb->add($asset->getSourceRoot() . '/' . $asset->getSourcePath());
+
+		$pb->add(storage_path().'/cache/sassc');
 
 		$process = $pb->getProcess();
 		$code = $process->run();
-		// unlink($input);
 
 		if (0 !== $code) {
-			throw FilterException::fromProcess($process); //->setInput($asset->getContent());
+			throw FilterException::fromProcess($process); 
 		}
 
 		$asset->setContent($process->getOutput());
+
+
 	}
 
 	/**
