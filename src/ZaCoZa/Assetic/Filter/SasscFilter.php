@@ -1,5 +1,5 @@
 <?php
-namespace namespace ZaCoZa\Assetic\Filter;;
+namespace ZaCoZa\Assetic\Filter;
 
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\DependencyExtractorInterface;
