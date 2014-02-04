@@ -15,14 +15,14 @@ use Assetic\Util\CssUtils;
  */
 class SasscFilter extends BaseProcessFilter implements DependencyExtractorInterface {
 
-	const STYLE_NESTED 						= 'nested';
-	const STYLE_EXPANDED 					= 'expanded';
-	const STYLE_COMPACT 					= 'compact';
-	const STYLE_COMPRESSED 				= 'compressed';
+	const STYLE_NESTED = 'nested';
+	const STYLE_EXPANDED = 'expanded';
+	const STYLE_COMPACT = 'compact';
+	const STYLE_COMPRESSED = 'compressed';
 	
-	const SOURCE_COMMENTS_NONE 		= 'none';
-	const SOURCE_COMMENTS_NORMAL 	= 'normal';
-	const SOURCE_COMMENTS_MAP 		= 'map';
+	const SOURCE_COMMENTS_NONE = 'none';
+	const SOURCE_COMMENTS_NORMAL = 'normal';
+	const SOURCE_COMMENTS_MAP = 'map';
 
 	protected $binaryPath;
 	protected $style;
