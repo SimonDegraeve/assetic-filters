@@ -31,11 +31,30 @@ class SasscFilter extends BaseProcessFilter implements DependencyExtractorInterf
 	protected $loadPaths = array();
 
 
-	public function __construct($binaryPath = '/usr/bin/node-sass') {
+	public function __construct($binaryPath = '/usr/bin/node-sass', array $filesToTouch = array()) {
 		$this->binaryPath = $binaryPath;
+		$this->touchFiles($filesToTouch);
 	}
 
+	/**
+   * Execute touch() on files to modify the access time
+   * Useful for assetic to force rebuild asset when modifications are made in "import files"
+   *
+   * @param array $files (with absolute paths)
+   */
+  public function touchFiles($files)
+  {
+      foreach($files as $file){
+          if(file_exists($file))
+              if(is_writable($file))
+                  touch($file);
+              else throw new \Exception("File is not writable: ".$file);
+          else throw new \Exception("File doesn't exists: ".$file); 
+      }
+  }
+
 	public function filterLoad(AssetInterface $asset) {
+
 		$sassProcessArgs = array($this->binaryPath);
 		$pb = $this->createProcessBuilder($sassProcessArgs);
 
